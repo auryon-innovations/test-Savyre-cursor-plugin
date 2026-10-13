@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "hooks": {
+    "preToolUse": [
+      {
+        "command": "node ./hooks/savyre-guard.mjs"
+      }
+    ],
+    "beforeShellExecution": [
+      {
+        "command": "node ./hooks/savyre-guard.mjs"
+      }
+    ],
+    "beforeReadFile": [
+      {
+        "command": "node ./hooks/savyre-guard.mjs"
+      }
+    ],
+    "afterFileEdit": [
+      {
+        "command": "node ./hooks/savyre-guard.mjs"
+      }
+    ],
+    "afterShellExecution": [
+      {
+        "command": "node ./hooks/savyre-guard.mjs"
+      }
+    ],
+    "sessionStart": [
+      {
+        "command": "node ./hooks/savyre-guard.mjs"
+      }
+    ],
+    "stop": [
+      {
+        "command": "node ./hooks/savyre-guard.mjs",
+        "loop_limit": 2
+      }
+    ]
+  }
+}

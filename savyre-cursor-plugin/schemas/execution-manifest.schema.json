@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://savyre.local/schemas/execution-manifest.schema.json",
+  "title": "Savyre execution manifest",
+  "description": "Short-lived permission slip for one Savyre stage run. Unsigned policy overrides are not allowed.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "executionId",
+    "workflowId",
+    "stageId",
+    "workspaceRoot",
+    "issuedAt",
+    "expiresAt",
+    "singleUse",
+    "writeMode",
+    "allowedTools",
+    "deniedTools",
+    "allowedPaths",
+    "excludedPaths",
+    "evidenceRequired",
+    "keyId",
+    "signature"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1" },
+    "executionId": { "type": "string", "minLength": 1 },
+    "workflowId": { "type": "string", "minLength": 1 },
+    "stageId": {
+      "type": "string",
+      "enum": [
+        "01-task-input",
+        "02-requirement-analysis",
+        "03-codebase-discovery",
+        "04-impact-analysis",
+        "05-plan-generation-and-review",
+        "06-implementation",
+        "07-implementation-tracking",
+        "08-implementation-code-review",
+        "09-test-discovery",
+        "10-test-generation-and-review",
+        "11-test-execution",
+        "12-debugging-iteration",
+        "13-security-regression-review",
+        "14-final-code-review",
+        "15-final-summary-ai-reflection"
+      ]
+    },
+    "workspaceRoot": { "type": "string", "minLength": 1 },
+    "issuedAt": { "type": "string", "format": "date-time" },
+    "expiresAt": { "type": "string", "format": "date-time" },
+    "singleUse": { "type": "boolean" },
+    "writeMode": { "type": "string", "enum": ["read_only", "read_write"] },
+    "allowedTools": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "deniedTools": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "allowedPaths": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "excludedPaths": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "evidenceRequired": { "type": "boolean" },
+    "keyId": { "type": "string", "minLength": 1 },
+    "signature": { "type": "string", "minLength": 1 }
+  }
+}
